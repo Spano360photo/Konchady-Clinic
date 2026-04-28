@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Konchady Clinic – ENT & Family Health, Mangaluru</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF7F2;
+    --warm-white: #FFFDF9;
+    --forest: #1E4A3A;
+    --forest-light: #2D6B55;
+    --sage: #6B8F71;
+    --sage-light: #A8C5A0;
+    --gold: #C4933F;
+    --gold-light: #E8C278;
+    --rust: #A84832;
+    --text: #1A1A1A;
+    --text-mid: #4A4A4A;
+    --text-muted: #7A7A7A;
+    --border: rgba(30,74,58,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,247,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--forest);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo-mark {
+    width: 36px; height: 36px;
+    background: var(--forest);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .nav-logo-mark svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 1.5; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.875rem;
+    color: var(--text-mid);
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--forest); }
+  .nav-cta {
+    background: var(--forest);
+    color: #fff !important;
+    padding: 8px 20px;
+    border-radius: 40px;
+    font-size: 0.875rem !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--forest-light) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    background: var(--forest);
+    padding: 140px 5% 80px 7%;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(196,147,63,0.12);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--gold-light);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 40px;
+    margin-bottom: 2rem;
+    width: fit-content;
+  }
+  .hero-tag span { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; display: block; }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold-light);
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.65);
+    font-size: 1.05rem;
+    font-weight: 300;
+    max-width: 460px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.85);
+    padding: 13px 26px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+
+  .hero-stats {
+    display: flex; gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--gold-light);
+  }
+  .stat-lbl {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .hero-right {
+    background: var(--warm-white);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    padding: 100px 6% 80px;
+    overflow: hidden;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(107,143,113,0.08);
+  }
+  .doctors-grid {
+    display: flex; flex-direction: column; gap: 20px;
+    width: 100%; max-width: 380px;
+    position: relative; z-index: 2;
+  }
+  .doctor-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex; gap: 18px; align-items: flex-start;
+    box-shadow: 0 2px 20px rgba(30,74,58,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: slideUp 0.7s ease both;
+  }
+  .doctor-card:nth-child(2) { animation-delay: 0.15s; margin-left: 30px; }
+  .doctor-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(30,74,58,0.12); }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .doctor-avatar {
+    width: 56px; height: 56px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+  }
+  .avatar-green { background: rgba(30,74,58,0.1); color: var(--forest); }
+  .avatar-teal { background: rgba(107,143,113,0.15); color: var(--forest-light); }
+  .doctor-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+  .doctor-qual {
+    font-size: 0.8rem;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .doctor-spec {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .badge {
+    display: inline-block;
+    background: rgba(30,74,58,0.07);
+    color: var(--forest);
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-top: 8px;
+    letter-spacing: 0.03em;
+  }
+
+  /* SECTION STYLES */
+  section { padding: 100px 7%; }
+  .section-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 600;
+    color: var(--forest);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    max-width: 560px;
+    line-height: 1.75;
+  }
+  .section-header { margin-bottom: 3.5rem; }
+
+  /* SERVICES */
+  .services { background: var(--warm-white); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .service-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px 28px;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--forest), var(--sage-light));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(30,74,58,0.1); background: #fff; }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+  .service-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin-bottom: 0.75rem;
+  }
+  .service-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+
+  /* DOCTORS SECTION */
+  .doctors-section { background: var(--forest); }
+  .doctors-section .section-title { color: #fff; }
+  .doctors-section .section-tag { color: var(--gold-light); }
+  .doctors-section .section-sub { color: rgba(255,255,255,0.6); }
+
+  .doctors-full-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .doctor-full-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px;
+    padding: 36px 32px;
+    transition: background 0.3s;
+  }
+  .doctor-full-card:hover { background: rgba(255,255,255,0.09); }
+  .doctor-full-header {
+    display: flex; gap: 20px; align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .doctor-full-avatar {
+    width: 72px; height: 72px;
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 600;
+    flex-shrink: 0;
+    background: rgba(196,147,63,0.2);
+    color: var(--gold-light);
+  }
+  .doctor-full-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .doctor-full-qual { font-size: 0.85rem; color: var(--gold-light); font-weight: 500; margin-bottom: 4px; }
+  .doctor-full-role { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+  .services-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .services-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.5;
+  }
+  .services-list li::before {
+    content: '✦';
+    color: var(--gold);
+    font-size: 0.6rem;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+
+  /* INFO STRIP */
+  .info-strip {
+    background: var(--gold);
+    padding: 32px 7%;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .info-item { display: flex; align-items: center; gap: 12px; }
+  .info-icon {
+    width: 44px; height: 44px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .info-label { font-size: 0.78rem; color: rgba(255,255,255,0.75); text-transform: uppercase; letter-spacing: 0.08em; }
+  .info-value { font-size: 0.95rem; color: #fff; font-weight: 500; margin-top: 1px; }
+
+  /* LOCATION */
+  .location-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    min-height: 520px;
+    background: var(--cream);
+    padding: 0;
+  }
+  .location-content {
+    padding: 80px 6% 80px 7%;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .location-map {
+    background: #c8ddc8;
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .map-embed {
+    width: 100%; height: 100%;
+    border: none;
+    min-height: 520px;
+  }
+  .contact-cards { display: flex; flex-direction: column; gap: 14px; margin-top: 2rem; }
+  .contact-card {
+    display: flex; align-items: center; gap: 14px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+  }
+  .contact-card-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .icon-green { background: rgba(30,74,58,0.08); }
+  .icon-gold { background: rgba(196,147,63,0.12); }
+  .icon-rust { background: rgba(168,72,50,0.08); }
+  .contact-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 2px; }
+  .contact-value { font-size: 0.95rem; font-weight: 500; color: var(--text); }
+  .contact-value a { color: var(--forest); text-decoration: none; }
+  .contact-value a:hover { text-decoration: underline; }
+
+  /* REVIEW CARD */
+  .review-card {
+    display: flex; align-items: center; gap: 14px;
+    background: linear-gradient(135deg, #FFF8EE, #FFF3E0);
+    border: 1.5px solid rgba(196,147,63,0.35);
+    border-radius: 14px;
+    padding: 18px 20px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .review-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(196,147,63,0.18); }
+  .review-stars { font-size: 1.1rem; color: #F5A623; letter-spacing: 1px; flex-shrink: 0; }
+  .review-title { font-size: 0.95rem; font-weight: 500; color: var(--text); margin-bottom: 2px; }
+  .review-sub { font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; }
+  .review-arrow { font-size: 1.2rem; color: var(--gold); margin-left: auto; flex-shrink: 0; }
+
+  /* FLOATING CTA */
+  .floating-cta {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    z-index: 200;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+  }
+  .float-btn {
+    display: flex; align-items: center; gap: 10px;
+    padding: 13px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+    transition: transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+  }
+  .float-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.22); }
+  .float-wa { background: #25D366; color: #fff; }
+  .float-call { background: var(--forest); color: #fff; }
+  .float-review { background: #fff; color: var(--text); border: 1.5px solid rgba(196,147,63,0.4); font-size: 0.82rem; }
+  .float-icon { font-size: 1.1rem; line-height: 1; }
+  .float-toggle {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--forest);
+    color: #fff;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(30,74,58,0.4);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.3s, background 0.2s;
+  }
+  .float-toggle:hover { background: var(--forest-light); }
+  .float-toggle.open { transform: rotate(45deg); }
+  .float-menu {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
+  }
+  .float-menu.visible { max-height: 300px; opacity: 1; }
+
+  /* FOOTER */
+  footer {
+    background: #111;
+    color: rgba(255,255,255,0.55);
+    padding: 40px 7%;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 600;
+  }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.82rem; }
+  .footer-links a:hover { color: #fff; }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 120px 6% 60px; min-height: 60vh; }
+    .hero-right { padding: 60px 6%; }
+    .doctor-card:nth-child(2) { margin-left: 0; }
+    .doctors-full-grid { grid-template-columns: 1fr; }
+    .location-section { grid-template-columns: 1fr; }
+    .location-map { min-height: 320px; }
+    .location-map .map-embed { min-height: 320px; }
+    section { padding: 70px 5%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 24 24"><path d="M12 2C9 2 7 5 7 8c0 4 5 9 5 9s5-5 5-9c0-3-2-6-5-6z"/><circle cx="12" cy="8" r="2"/></svg>
+    </div>
+    Konchady Clinic
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#doctors">Our Doctors</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="tel:08169832198" class="nav-cta">Book Appointment</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-tag"><span></span>Mangaluru's Trusted Healthcare</div>
+    <h1>Expert Care in <em>ENT</em> &amp; Community Health</h1>
+    <p class="hero-sub">Comprehensive healthcare for every generation — from preventive screenings to specialized ENT treatment, all under one compassionate roof in Derebail, Konchady.</p>
+    <div class="hero-actions">
+      <a href="tel:08169832198" class="btn-primary">📞 Book Appointment</a>
+      <a href="https://wa.me/918169832198" target="_blank" class="btn-outline">💬 WhatsApp Us</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-lbl">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-lbl">Expert Doctors</div>
+      </div>
+      <div>
+        <div class="stat-num">7+</div>
+        <div class="stat-lbl">Specialities</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="doctors-grid">
+      <div class="doctor-card">
+        <div class="doctor-avatar avatar-green">PB</div>
+        <div>
+          <div class="doctor-name">Dr. Prathvimraj B U</div>
+          <div class="doctor-qual">MD, Community Medicine</div>
+          <div class="doctor-spec">Community Physician · Preventive Health · Disease Screening · Diet Consultation · Palliative Care</div>
+          <div class="badge">10+ Years Experience</div>
+        </div>
+      </div>
+      <div class="doctor-card">
+        <div class="doctor-avatar avatar-teal">N</div>
+        <div>
+          <div class="doctor-name">Dr. Nishma</div>
+          <div class="doctor-qual">ENT Surgeon</div>
+          <div class="doctor-spec">Ear · Nose · Throat · Head &amp; Neck Disorders · ENT Endoscopy</div>
+          <div class="badge">ENT Specialist</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header">
+    <span class="section-tag">What We Offer</span>
+    <h2 class="section-title">Holistic Healthcare<br>Under One Roof</h2>
+    <p class="section-sub">From early disease screening to rehabilitation and ENT care — we provide personalised, compassionate treatment for every member of your family.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🩺</span>
+      <div class="service-name">Preventive Health</div>
+      <p class="service-desc">Proactive wellness check-ups and lifestyle screenings for diabetes, hypertension, and other non-communicable diseases. Stay ahead of illness.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">👂</span>
+      <div class="service-name">ENT Specialist Care</div>
+      <p class="service-desc">Advanced treatment for ear, nose, throat, and head-neck disorders. Services include ENT endoscopy, ear cleaning, ear piercing, and foreign body removal.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🍎</span>
+      <div class="service-name">Diet Consultation</div>
+      <p class="service-desc">Personalised nutrition planning and weight management guidance. Achieve your health goals with expert, tailored dietary advice.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🏘️</span>
+      <div class="service-name">Community Health</div>
+      <p class="service-desc">Comprehensive primary care for all age groups — from children to seniors. Trusted, compassionate treatment for the whole community under one roof.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">💊</span>
+      <div class="service-name">Curative Health</div>
+      <p class="service-desc">Treatment of general and systemic illnesses including fever, respiratory infections, and gastrointestinal issues. Adult vaccinations and management of chronic conditions such as diabetes and hypertension.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🌿</span>
+      <div class="service-name">Rehabilitation & Palliative</div>
+      <p class="service-desc">Certified pain and palliative care support for recovery and long-term comfort. Compassionate management for patients and families.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔬</span>
+      <div class="service-name">Disease Screening</div>
+      <p class="service-desc">Early detection and management of lifestyle diseases. Timely identification of diabetes, blood pressure, and related conditions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INFO STRIP -->
+<div class="info-strip">
+  <div class="info-item">
+    <div class="info-icon">📍</div>
+    <div>
+      <div class="info-label">Location</div>
+      <div class="info-value">Derebail, Konchady, Mangaluru</div>
+    </div>
+  </div>
+  <div class="info-item">
+    <div class="info-icon">📞</div>
+    <div>
+      <div class="info-label">Call Us</div>
+      <div class="info-value">081698 32198</div>
+    </div>
+  </div>
+  <div class="info-item">
+    <div class="info-icon">💬</div>
+    <div>
+      <div class="info-label">WhatsApp</div>
+      <div class="info-value">077959 35001</div>
+    </div>
+  </div>
+  <div class="info-item">
+    <div class="info-icon">🏥</div>
+    <div>
+      <div class="info-label">Landmark</div>
+      <div class="info-value">Opp. Vidya Higher Primary School</div>
+    </div>
+  </div>
+</div>
+
+<!-- DOCTORS -->
+<section class="doctors-section" id="doctors">
+  <div class="section-header">
+    <span class="section-tag">Meet Our Team</span>
+    <h2 class="section-title">Experienced Doctors,<br>Compassionate Care</h2>
+    <p class="section-sub">Our team brings together specialised expertise in community medicine and ENT surgery, committed to your well-being.</p>
+  </div>
+  <div class="doctors-full-grid">
+    <div class="doctor-full-card">
+      <div class="doctor-full-header">
+        <div class="doctor-full-avatar">PB</div>
+        <div>
+          <div class="doctor-full-name">Dr. Prathvimraj B U</div>
+          <div class="doctor-full-qual">MD, Community Medicine</div>
+          <div class="doctor-full-role">Community Physician · 10+ Years Experience</div>
+        </div>
+      </div>
+      <ul class="services-list">
+        <li>Preventive Health &amp; Proactive Wellness Check-ups</li>
+        <li>Disease Screening — Diabetes, Hypertension &amp; Lifestyle Conditions</li>
+        <li>Diet Consultation &amp; Personalised Nutrition Planning</li>
+        <li>Certified Pain &amp; Palliative Care</li>
+        <li>Rehabilitation Services &amp; Long-term Care</li>
+        <li>Community Health &amp; General Practice</li>
+      </ul>
+    </div>
+    <div class="doctor-full-card">
+      <div class="doctor-full-header">
+        <div class="doctor-full-avatar">N</div>
+        <div>
+          <div class="doctor-full-name">Dr. Nishma</div>
+          <div class="doctor-full-qual">ENT Surgeon</div>
+          <div class="doctor-full-role">Specialist — Ear, Nose, Throat &amp; Head-Neck</div>
+        </div>
+      </div>
+      <ul class="services-list">
+        <li>Medical &amp; Surgical Treatment of ENT Disorders</li>
+        <li>Head &amp; Neck Disease Management</li>
+        <li>ENT Endoscopy</li>
+        <li>Ear Cleaning &amp; Ear Piercing</li>
+        <li>Foreign Body Removal</li>
+        <li>Comprehensive ENT Consultations</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION + CONTACT -->
+<div class="location-section" id="contact">
+  <div class="location-content">
+    <span class="section-tag">Find Us</span>
+    <h2 class="section-title">Visit Konchady Clinic</h2>
+    <p class="section-sub" style="font-size:0.95rem;">Conveniently located in the heart of Derebail, just opposite Vidya Higher Primary School.</p>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="contact-card-icon icon-green">📍</div>
+        <div>
+          <div class="contact-label">Address</div>
+          <div class="contact-value">Opp. Vidya Higher Primary School, Derebail, Konchady, Mangaluru – 575008</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon icon-green">📞</div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-value"><a href="tel:08169832198">081698 32198</a></div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon icon-gold">💬</div>
+        <div>
+          <div class="contact-label">WhatsApp</div>
+          <div class="contact-value"><a href="https://wa.me/918169832198" target="_blank">077959 35001</a></div>
+      <a href="https://g.page/r/CZ3C75kkygipEBM/review" target="_blank" class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div>
+          <div class="review-title">Leave us a Google Review</div>
+          <div class="review-sub">Loved your visit? Share your experience and help others find us.</div>
+        </div>
+        <div class="review-arrow">→</div>
+      </a>
+    </div>
+  </div>
+  <div class="location-map" style="display:flex; flex-direction:column;">
+    <iframe
+      style="flex:1; width:100%; border:none; min-height:260px;"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.0075897594384!2d74.8488835!3d12.9072333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba35b90e9da591b%3A0xa908ca2499efc29d!2sKONCHADY%20CLINIC!5e0!3m2!1sen!2sin!4v1773955944526!5m2!1sen!2sin"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Konchady Clinic Location">
+    </iframe>
+    <iframe
+      style="flex:1; width:100%; border:none; min-height:260px; border-top:2px solid var(--cream);"
+      src="https://www.google.com/maps/embed?pb=!4v1773956057169!6m8!1m7!1sCAoSLEFGMVFpcE9nMUVZSHl2SHBTRkZ6NEFEME9vUzZmdkJKUkxmNDIxSlB1OU5L!2m2!1d12.90723327095863!2d74.84888351545864!3f352.8256553531561!4f14.447062652219273!5f0.4000000000000002"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Konchady Clinic Street View">
+    </iframe>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Konchady Clinic</div>
+    <div style="margin-top:6px; font-size:0.8rem;">Derebail, Konchady, Mangaluru – 575008</div>
+  </div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#doctors">Doctors</a>
+    <a href="#contact">Contact</a>
+    <a href="https://wa.me/918169832198" target="_blank">WhatsApp</a>
+  </div>
+  <div style="font-size:0.8rem;">© 2025 Konchady Clinic. All rights reserved.</div>
+</footer>
+
+<!-- FLOATING CTA -->
+<div class="floating-cta">
+  <div class="float-menu" id="floatMenu">
+    <a href="https://g.page/r/CZ3C75kkygipEBM/review" target="_blank" class="float-btn float-review">
+      <span class="float-icon">⭐</span> Review Us
+    </a>
+    <a href="https://wa.me/918169832198" target="_blank" class="float-btn float-wa">
+      <span class="float-icon">💬</span> WhatsApp
+    </a>
+    <a href="tel:08169832198" class="float-btn float-call">
+      <span class="float-icon">📞</span> Call Now
+    </a>
+  </div>
+  <button class="float-toggle" id="floatToggle" onclick="toggleFloat()" title="Quick Actions">+</button>
+</div>
+
+<script>
+function toggleFloat() {
+  const menu = document.getElementById('floatMenu');
+  const btn = document.getElementById('floatToggle');
+  menu.classList.toggle('visible');
+  btn.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
